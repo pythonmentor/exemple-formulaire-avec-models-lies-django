@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container">
+    <h1>Bienvenue sur mon exemple</h1>
+
+    <form id="parent-creation" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <p id="field-id-{{ field.name }}">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </p>
+        {% endfor %}
+        <button class="btn waves-effect waves-light" hx-get="{% url 'parent-create' %}" hx-target="#modal">Créer un parent
+            <i class="material-icons right">add_circle</i>
+        </button>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Créer
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</main>
+{% endblock content %}
+
+{% block modals %}
+<div id="modal" class="modal">
+</div>
+{% endblock modals %}
+
+{% block bottom_scripts %}{% endblock bottom_scripts %}

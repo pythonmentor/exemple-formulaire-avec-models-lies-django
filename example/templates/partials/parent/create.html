@@ -1,0 +1,7 @@
+<div class="container" style="margin-bottom: 1rem">
+    <form method="post" hx-post="{% url 'parent-create' %}" hx-swap="outerHTML">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Créer</button>
+    </form>
+</div>

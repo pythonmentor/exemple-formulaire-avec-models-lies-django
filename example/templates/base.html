@@ -1,0 +1,30 @@
+{% load django_vite %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% vite_hmr_client %}
+    {# path of your vite assets are relative to the frontend directory #}
+    {% vite_asset 'src/application/app.js' %}
+
+    {% block head_styles %}{% endblock head_styles %}
+
+    {% block head_scripts %}{% endblock head_scripts %}
+</head>
+<body class="{% block body_classes %}{% endblock body_classes %}">
+    
+    {% block content %}{% endblock content %}
+
+    {% block footer %}{% endblock footer %}
+
+    {% block modals %}{% endblock modals %}
+
+    {% block bottom_scripts %}{% endblock bottom_scripts %}
+</body>
+</html>
